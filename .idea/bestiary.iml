@@ -119,6 +119,17 @@
       <excludeFolder url="file://$MODULE_DIR$/bestiary/vendor/composer" />
       <excludeFolder url="file://$MODULE_DIR$/bestiary/vendor/doctrine/instantiator" />
       <excludeFolder url="file://$MODULE_DIR$/bestiary/vendor/sebastian/code-unit-reverse-lookup" />
+      <excludeFolder url="file://$MODULE_DIR$/bestiary/vendor/justinrainbow/json-schema" />
+      <excludeFolder url="file://$MODULE_DIR$/bestiary/vendor/symfony/filesystem" />
+      <excludeFolder url="file://$MODULE_DIR$/bestiary/vendor/seld/phar-utils" />
+      <excludeFolder url="file://$MODULE_DIR$/bestiary/vendor/seld/jsonlint" />
+      <excludeFolder url="file://$MODULE_DIR$/bestiary/vendor/barryvdh/reflection-docblock" />
+      <excludeFolder url="file://$MODULE_DIR$/bestiary/vendor/barryvdh/laravel-ide-helper" />
+      <excludeFolder url="file://$MODULE_DIR$/bestiary/vendor/react/promise" />
+      <excludeFolder url="file://$MODULE_DIR$/bestiary/vendor/doctrine/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/bestiary/vendor/doctrine/event-manager" />
+      <excludeFolder url="file://$MODULE_DIR$/bestiary/vendor/doctrine/dbal" />
+      <excludeFolder url="file://$MODULE_DIR$/bestiary/vendor/doctrine/deprecations" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

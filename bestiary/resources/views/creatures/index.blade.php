@@ -9,11 +9,9 @@
     <div class="row">
         <div class="col-md-12">
             <h1></h1>
-            <p>Bestiary coming right up!
-
-            </p>
+            <li>creatures{{$creatures->name}}</li>
         </div>
     </div>
     <div
+        @endsection
 
-@endsection

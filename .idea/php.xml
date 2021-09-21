@@ -113,6 +113,17 @@
       <path value="$PROJECT_DIR$/bestiary/vendor/composer" />
       <path value="$PROJECT_DIR$/bestiary/vendor/doctrine/instantiator" />
       <path value="$PROJECT_DIR$/bestiary/vendor/sebastian/code-unit-reverse-lookup" />
+      <path value="$PROJECT_DIR$/bestiary/vendor/justinrainbow/json-schema" />
+      <path value="$PROJECT_DIR$/bestiary/vendor/symfony/filesystem" />
+      <path value="$PROJECT_DIR$/bestiary/vendor/seld/phar-utils" />
+      <path value="$PROJECT_DIR$/bestiary/vendor/seld/jsonlint" />
+      <path value="$PROJECT_DIR$/bestiary/vendor/barryvdh/reflection-docblock" />
+      <path value="$PROJECT_DIR$/bestiary/vendor/barryvdh/laravel-ide-helper" />
+      <path value="$PROJECT_DIR$/bestiary/vendor/react/promise" />
+      <path value="$PROJECT_DIR$/bestiary/vendor/doctrine/cache" />
+      <path value="$PROJECT_DIR$/bestiary/vendor/doctrine/event-manager" />
+      <path value="$PROJECT_DIR$/bestiary/vendor/doctrine/dbal" />
+      <path value="$PROJECT_DIR$/bestiary/vendor/doctrine/deprecations" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.3">
