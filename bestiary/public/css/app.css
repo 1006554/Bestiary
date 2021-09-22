@@ -4,11 +4,35 @@ body {
 
 }
 
-.navigation{
-    padding: 40px;
-    margin-top: -50px;
-    margin-right: -20px;
-    margin-left: -20px;
+.header-banner{
+
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/The_Garden_of_earthly_delights.jpg/1920px-The_Garden_of_earthly_delights.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 200px;
+}
+
+header{
+    background-color: #2d3748;
+    margin: -20px;
+    height: 270px;
+    z-index: 10;
+}
+header h1 {
+    background-color: rgba(18,72,120, 0.8);
+    color: #fff;
+    padding: 0 1rem;
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+}
+.fixed-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
 }
 
 .dropbtn {
@@ -21,9 +45,9 @@ body {
 }
 
 .dropdown {
-    margin: 20px;
+    margin: 10px;
     justify-content: start;
-    display: inline-block;
+    display: inline-flex;
 }
 
 .dropdown-content {
@@ -54,11 +78,11 @@ body {
     background-color: #FF706F;
 }
 .search-bar{
-    margin: 20px;
+    margin: 10px;
     border-radius: 15px;
     list-style-type: none;
-    justify-content: space-between;
-    display: inline-block;
+    justify-content: right;
+    display: inline-flex;
 }
 
 .searchbtn{
@@ -77,4 +101,19 @@ body {
     padding: 16px;
     border: none;
     width: 500px;
+}
+
+footer{
+    position: fixed;
+    background-color: #2d3748;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+footer a{
+    color: white;
+    padding: 20px;
 }

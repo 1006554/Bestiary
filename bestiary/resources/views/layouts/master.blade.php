@@ -13,4 +13,7 @@
     @yield('content')
 </div>
 </body>
+<footer>
+    @include('partials.footer')
+</footer>
 </html>
