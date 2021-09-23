@@ -17,6 +17,9 @@ class CreateCreatureTable extends Migration
             $table->id();
             $table->string('name');
             $table->text('description')->nullable();
+           // $table->string('type')->nullable();
+          //  $table->string('country')->nullable();
+           // $table->string('environment')->nullable();
             $table->timestamps();
             /**$table->string('tags')
              * $table->string('category)

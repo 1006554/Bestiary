@@ -2,16 +2,13 @@
 
 @section('content')
     <div class="row">
-
-            <H1 class="Title">Bestiary</H1>
+        <h1>{{$title}}</h1>
+        <p>{{$paragraph}}</p>
+        <ul>
+            @foreach($info as $in)
+            <li>{{$in['name']}}</li>
+                <li>{{$in['type']}}</li>
+            @endforeach
+        </ul>
     </div>
-    <div class="row">
-
-            <h1></h1>
-            <p>Bestiary coming right up!
-
-            </p>
-    </div>
-    <div
-
 @endsection

@@ -1,16 +1,12 @@
 @extends('layouts.master')
 
 @section('content')
-    <div class="row">
-        <div class="col-md-12">
-            <h1>Roc</h1>
-        </div>
+    <div class="main-article">
+        <h1>Roc</h1>
+        <img href="#">
+        <p>Roc info</p>
     </div>
-    <div class="row">
-        <div class="col-md-12">
 
-        </div>
-    </div>
-    <div
+
 
 @endsection

@@ -8,8 +8,21 @@ class CreatureController extends Controller
 {
     public function index(){
         //get data from Creature model
-        $creatures = creature::all();
+        //$creatures = creature::all();
+        $title = "Overview";
+        $paragraph ="Blah blah blah";
+        $info = [
+            [
+                'name' => 'Flatwoods monster',
+                'type' => 'Cryptid',
+            ],
+            [
+                'name' => 'Kelly Hopkinsville Goblin',
+                'type' => 'Alien',
+            ]
+        ];
+
         //pass to creature view
-        return view('creatures.index');
+        return view('welcome',compact('title','paragraph','info'));
     }
 }

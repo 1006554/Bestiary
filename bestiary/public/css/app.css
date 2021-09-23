@@ -34,7 +34,7 @@ header h1 {
     left: 0;
     width: 100%;
 }
-
+/*
 .dropbtn {
     border-radius: 5px 5px 15px 15px;
     background-color: #FF706F;
@@ -102,6 +102,9 @@ header h1 {
     border: none;
     width: 500px;
 }
+*/
+
+
 
 footer{
     position: fixed;
