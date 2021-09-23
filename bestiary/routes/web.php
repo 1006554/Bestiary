@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\creatureController;
+use App\Http\Controllers\CreatureController;
+use App\Http\Controllers\TagsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,4 +18,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/creatures', [creatureController::class, 'index']);
+Route::get('/', [CreatureController::class, 'index']);

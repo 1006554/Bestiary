@@ -1,13 +1,12 @@
 @extends('layouts.master')
 
 @section('content')
-    <div class="row">
-        <h1>{{$title}}</h1>
-        <p>{{$paragraph}}</p>
+    <div>
         <ul>
             @foreach($info as $in)
-            <li>{{$in['name']}}</li>
-                <li>{{$in['type']}}</li>
+                <li>{{$in['name']}}</li>
+                <img src="{{$in['img']}}" alt="{{$in['name']}}">
+                <li>{{$in['type']}}</li><br>
             @endforeach
         </ul>
     </div>

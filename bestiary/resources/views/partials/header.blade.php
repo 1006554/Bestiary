@@ -3,8 +3,6 @@
         <h1>Bestiary</h1>
     </div>
 
-
-
 <div class="dropdown">
     <button class="dropbtn">Categories</button>
     <div class="dropdown-content">
