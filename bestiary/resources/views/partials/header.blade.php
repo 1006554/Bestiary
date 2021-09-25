@@ -17,6 +17,8 @@
         <input class="form-control" type="search" placeholder="Search" label="Search"></form>
         <button class="searchbtn" type="submit">Search</button>
     </form>
+    <a href="#">Login</a>
+    <a href="#">Register</a>
 </div>
 </header>
 

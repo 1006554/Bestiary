@@ -1,7 +1,12 @@
 body {
     font-family: Arial;
     font-size: 18px;
+    padding: 5px;
+}
 
+.featured-articles{
+    display: inline-flex;
+    padding: 5px;
 }
 
 .header-banner{
@@ -28,6 +33,18 @@ header h1 {
     top: 2rem;
     left: 2rem;
 }
+
+header a {
+    border-radius: 15px;
+    background-color: #FF706F;
+    color: white;
+    padding: 16px;
+    border: none;
+    cursor: pointer;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
 .fixed-header {
     position: fixed;
     top: 0;
@@ -92,6 +109,8 @@ header h1 {
     padding: 16px;
     border: none;
     cursor: pointer;
+    margin-right: 5px;
+    margin-left: 5px;
 }
 
 .form-control{
