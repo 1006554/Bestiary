@@ -11,6 +11,6 @@ class CreatureController extends Controller
         $creatures = Creature::all();
 
 
-        return view('welcome', compact('creatures'));
+        return view('blog.welcome', compact('creatures'));
     }
 }

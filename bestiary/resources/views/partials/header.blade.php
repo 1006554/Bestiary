@@ -1,6 +1,8 @@
 <header>
     <div class="header-banner">
+        <!---<a href={{'blog.welcome'}}--->>>>
         <h1>Bestiary</h1>
+
     </div>
 
 <div class="dropdown">
@@ -17,7 +19,7 @@
         <input class="form-control" type="search" placeholder="Search" label="Search"></form>
         <button class="searchbtn" type="submit">Search</button>
     </form>
-    <a href="#">Login</a>
+    <a href={{route('admin.index')}}>Login</a>
     <a href="#">Register</a>
 </div>
 </header>

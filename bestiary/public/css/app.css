@@ -128,7 +128,7 @@ img{
 }
 
 footer{
-    position: sticky;
+    position: fixed;
     background-color: #2d3748;
     margin: -10px;
     left: 0;
