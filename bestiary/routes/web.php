@@ -12,38 +12,41 @@ use App\Http\Controllers\CreatureController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::group(['prefix' => 'blog'], function(){
-    Route::get('/', function () {
-        return view('blog.welcome');
-    })->name('blog.welcome');
-    Route::get('/', [CreatureController::class, 'index']);
-
-    Route::get('post/{creatureId}', function () {
-        return view('blog.post');
-    })->name('blog.post');
-});
+Route::get('/', function () {
+    return view('blog.welcome');
+})->name('blog.welcome');
+Route::get('/', [CreatureController::class, 'index']);
+Route::get('post/{creatureId}', function ($creatureId) {
+    return view('blog.post');
+})->name('blog.post', []);
 
 
 Route::group(['prefix'=> 'admin'], function(){
-    Route::get('', function() {
-        return view('index');
-    })->name('index');
+    Route::get('/index', function() {
+        return view('admin.index');
+    })->name('admin.index');
 
-    Route::post('create', function(){
-        return "It works!";
-    })->name('create');
+    Route::post('/create', function(\Illuminate\Http\Request $request){
+        return redirect()->route('admin.index')->with($request);
+    })->name('admin.create');
 
-    Route::get('create', function(){
+    Route::get('/create', function(){
         return view('admin.create');
     })->name('admin.create');
 
-    Route::get('edit/', function(){
-        return view('admin.edit');
-    })->name('edit');
+    Route::get('/edit/{creatureId}', function($creatureId){
+        if ($creatureId == 1){
+            $post = [
+                'title'=>'Name of the creature',
+                'content'=>'Description'
+            ];
+        }
+        return view('admin.edit', ['post' => $post]);
+    })->name('admin.edit');
 
-    Route::post('edit', function(){
-        return "It works!";
-    })->name('update');
+    Route::post('/edit', function(\Illuminate\Http\Request $request){
+        return redirect()->route('admin.index')->with('info', 'Post edited' . $request->input('title'));
+    })->name('admin.update');
 });
 
 /*Route::get('login' function(){

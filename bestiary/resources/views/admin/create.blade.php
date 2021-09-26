@@ -8,6 +8,7 @@
             <label for="lname">Last name:</label><br>
             <input type="text" id="lname" name="lname">
             <button type="submit">Submit</button>
+            {{csrf_field()}}
         </form>
     </div>
 @endsection
