@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CreatureController;
+use App\Http\Controllers\Auth\LoginController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,9 +15,12 @@ use App\Http\Controllers\CreatureController;
 |
 */
 Route::get('/', function () {
-    return view('blog.welcome');
-})->name('blog.welcome');
+    return view('home');
+})->name('home');
 Route::get('/', [CreatureController::class, 'index']);
+
+route::get('/mythology', [\App\Http\Controllers\MythologyController::class, 'index']);
+
 Route::get('post/{creatureId}', function ($creatureId) {
     return view('blog.post');
 })->name('blog.post', []);
@@ -32,7 +37,7 @@ Route::group(['prefix'=> 'admin'], function(){
 
     Route::get('/create', function(){
         return view('admin.create');
-    })->name('admin.create');
+    })->name('admin.store');
 
     Route::get('/edit/{creatureId}', function($creatureId){
         if ($creatureId == 1){
@@ -49,14 +54,11 @@ Route::group(['prefix'=> 'admin'], function(){
     })->name('admin.update');
 });
 
-/*Route::get('login' function(){
-    return view('admin.login');
-});
-*/
 
+Auth::routes();
 
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Auth::routes();
 
-
-
-
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

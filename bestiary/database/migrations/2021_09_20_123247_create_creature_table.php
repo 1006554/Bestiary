@@ -16,8 +16,9 @@ class CreateCreatureTable extends Migration
         Schema::create('creatures', function (Blueprint $table ) {
             $table->id();
             $table->string('name');
-            $table->text('description')->nullable();
-            $table->string('tags')->nullable();
+            $table->text('image');
+            $table->text('description');
+            $table->text('tags')->nullable();
             $table->timestamps();
         });
     }

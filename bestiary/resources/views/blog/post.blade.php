@@ -2,13 +2,9 @@
 
 @section('content')
     <div class="post">
-        <h1 class="post-title">Hello</h1>
-        <p class="post-desc"> Hello</p>
+        <h1 class="post-title">{{$name}}</h1>
+        <p>{{$description}}</p>
+        <img src="{{$image}}">
         <img src="#">
-        <!-----<ul>
-           //foreach($creatures as $creature)
-                <li>///$creature</li>
-           // endforeach;
-        </ul>-->
     </div>
 @endsection

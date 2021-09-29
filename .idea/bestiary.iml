@@ -130,6 +130,7 @@
       <excludeFolder url="file://$MODULE_DIR$/bestiary/vendor/doctrine/event-manager" />
       <excludeFolder url="file://$MODULE_DIR$/bestiary/vendor/doctrine/dbal" />
       <excludeFolder url="file://$MODULE_DIR$/bestiary/vendor/doctrine/deprecations" />
+      <excludeFolder url="file://$MODULE_DIR$/bestiary/vendor/laravel/ui" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

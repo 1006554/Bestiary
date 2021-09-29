@@ -1,16 +1,29 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Creature;
+use App\Models\Creatures;
 use Illuminate\Http\Request;
 
 class CreatureController extends Controller
 {
     public function index(){
+        $creatures = Creatures::select('name')->get();
 
-        $creatures = Creature::all();
-
-
-        return view('blog.welcome', compact('creatures'));
+        return view('home', compact('creatures'));
     }
+
+    function post($creatureId){
+        if ($creatureId == Creatures::select('id')->get()){
+            $post = Creatures::select($name = 'name', $description = 'description', $image = 'image')->get();
+            return view('creature.'.$creatureId,
+                [
+                    'post' => $post,
+                    'name' => $name,
+                    'description' => $description,
+                    'image' => $image
+                ]);
+        };
+
+    }
+
 }
