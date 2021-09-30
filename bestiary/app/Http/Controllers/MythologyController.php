@@ -7,14 +7,11 @@ use function React\Promise\all;
 
 class MythologyController extends Controller
 {
-    public function index(){
-        if($mythologyCrits = Creatures::select('tags', )
-            ->where('mythology')
-            ->orderBy('name')
-            ->get());
-        {
-            return view('blog.mythology', compact('mythologyCrits'));
+    public function mythology()
+    {
+        if($tags = 'Mythology'){
+            $names = Creatures::find($tags);
+            return view('blog.mythology', compact('names'));
+        };
         }
-            return 'Nothing to see yet';
-    }
 }

@@ -1,10 +1,12 @@
-@extends('layouts.master')
+@extends('layouts.app')
 
 @section('content')
 
     <ul>
-        @foreach($mythologyCrits as $mythologyCrit)
-            <a href="The link with the id idk how to do this yet tho">{{$mythologyCrit}}</a>
+        @foreach($names as $name)
+            <li>
+                <a href="#">{{$name}}</a>
+            </li>
         @endforeach
     </ul>
 @endsection

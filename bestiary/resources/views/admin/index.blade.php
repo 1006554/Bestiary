@@ -1,4 +1,4 @@
-@extends('layouts.master-admin')
+@extends('layouts.app')
 
 @section('content')
     @if(Session::has('info'))
