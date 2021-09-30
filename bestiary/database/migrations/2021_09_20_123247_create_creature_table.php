@@ -13,17 +13,13 @@ class CreateCreatureTable extends Migration
      */
     public function up()
     {
-        Schema::create('creature', function (Blueprint $table) {
+        Schema::create('creatures', function (Blueprint $table ) {
             $table->id();
             $table->string('name');
-            $table->text('description')->nullable();
-           // $table->string('type')->nullable();
-          //  $table->string('country')->nullable();
-           // $table->string('environment')->nullable();
+            $table->text('image');
+            $table->text('description');
+            $table->text('tags')->nullable();
             $table->timestamps();
-            /**$table->string('tags')
-             * $table->string('category)
-             */
         });
     }
 
@@ -34,6 +30,6 @@ class CreateCreatureTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('creature');
+        Schema::dropIfExists('creatures');
     }
 }

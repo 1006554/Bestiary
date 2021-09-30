@@ -1,7 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\creatureController;
+use App\Http\Controllers\CreatureController;
+use App\Http\Controllers\MythologyController;
+use App\Http\Controllers\Auth\LoginController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,9 +15,39 @@ use App\Http\Controllers\creatureController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
+})->name('home');
+Route::get('/', [CreatureController::class, 'index']);
+
+route::get('/mythology', [MythologyController::class, 'mythology']);
+
+Route::get('article/{id}', [CreatureController::class, 'article']);
+
+
+Route::group(['prefix'=> 'admin'], function(){
+    Route::get('/index', function() {
+        return view('admin.index');
+    })->name('admin.index');
+
+    Route::post('/create', function(\Illuminate\Http\Request $request){
+        return redirect()->route('admin.index')->with($request);
+    })->name('admin.create');
+
+    Route::get('/create', function(){
+        return view('admin.create');
+    })->name('admin.store');
+
+    Route::post('/edit', function(\Illuminate\Http\Request $request){
+        return redirect()->route('admin.index')->with('info', 'Post edited' . $request->input('title'));
+    })->name('admin.update');
 });
 
-Route::get('/creatures', [creatureController::class, 'index']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

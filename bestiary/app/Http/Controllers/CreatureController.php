@@ -1,28 +1,21 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Creature;
+use App\Models\Creatures;
 use Illuminate\Http\Request;
+use function React\Promise\race;
 
 class CreatureController extends Controller
 {
     public function index(){
-        //get data from Creature model
-        //$creatures = creature::all();
-        $title = "Overview";
-        $paragraph ="Blah blah blah";
-        $info = [
-            [
-                'name' => 'Flatwoods monster',
-                'type' => 'Cryptid',
-            ],
-            [
-                'name' => 'Kelly Hopkinsville Goblin',
-                'type' => 'Alien',
-            ]
-        ];
+        $creatures = Creatures::select('name');
 
-        //pass to creature view
-        return view('welcome',compact('title','paragraph','info'));
+        return view('home', compact('creatures'));
+    }
+
+    function article($id) {
+        if($article = Creatures::find($id)){
+            return view('blog.article', compact('article'));
+        }
     }
 }
