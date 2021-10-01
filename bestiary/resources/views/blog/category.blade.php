@@ -1,12 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    <ul class="col-md-8">
+
+    <ul>
         @foreach($categoryItems as $categoryItem)
-            @if($categoryItem->toggle == 1)
             <li>
-                <a href="{{route('creatures.show', ['creature' => $categoryItem->id])}}">{{$categoryItem-> name}}</a>
+                <img src="{{$categoryItem -> image}}" alt="thumbnails" class="img-thumbnail">
+                <a href="article/{{$categoryItem -> id}}">{{$categoryItem-> name}}</a>
             </li>
-            @endif
         @endforeach
+    </ul>
 @endsection
