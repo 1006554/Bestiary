@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CreatureController;
-use App\Http\Controllers\MythologyController;
+use App\Http\Controllers\TagController;
 use App\Http\Controllers\Auth\LoginController;
 
 /*
@@ -20,7 +20,7 @@ Route::get('/', function () {
 })->name('home');
 Route::get('/', [CreatureController::class, 'index']);
 
-route::get('/mythology', [MythologyController::class, 'mythology']);
+route::get('/{tags}', [TagController::class, 'category']);
 
 Route::get('article/{id}', [CreatureController::class, 'article']);
 
