@@ -6,13 +6,16 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Dashboard') }}</div>
-                <a href="admin/create">Create a new post</a>
-                <ul>
-                    @foreach($creatures as $creature)
-                        <li>{{$creature}}</li>
-                    @endforeach
-                </ul>
 
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
+                    {{ __('You are logged in!') }}
+                </div>
             </div>
         </div>
     </div>
