@@ -1,3 +1,4 @@
+
 <header>
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
@@ -14,9 +15,9 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Categories</a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="http://localhost/bestiary/bestiary/public/mythology">Mythology</a>
-                                <a class="dropdown-item" href="http://localhost/bestiary/bestiary/public/cryptid">Cryptids</a>
-                                <a class="dropdown-item" href="http://localhost/bestiary/bestiary/public/aliens">Aliens</a>
+                                <a class="dropdown-item" href="{{URL::to('mythology')}}">Mythology</a>
+                                <a class="dropdown-item" href="{{URL::to('cryptid')}}">Cryptids</a>
+                                <a class="dropdown-item" href="{{URL::to('aliens')}}">Aliens</a>
                             </div>
                         </li>
                 </ul>
@@ -62,4 +63,5 @@
         </div>
     </nav>
 </header>
+
 

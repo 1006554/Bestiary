@@ -1,53 +1,23 @@
 @extends('layouts.app')
 
 @section('content')
-    @if (Auth::check())
-        <div class="container">
-            <div class="row gutters">
-                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <div class="account-settings">
-                                    <h5 class="user-name"> {{Auth::user()->name}}</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                    <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <div class="row gutters">
-                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                    <h6 class="mb-2 text-primary">Personal Details</h6>
-                                </div>
-                                <form method="POST" action="{{route('users.update', ['user' => Auth::user()->id])}}"  enctype="multipart/form-data">
-                                    {{ method_field('PUT') }}
-                                    {{ csrf_field() }}
-                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                        <label for="name">Username</label>
-                                        <input type="text" class="form-control" name="name" value=" {{Auth::user()->name}}">
-                                </div>
-                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                        <label for="email">Email</label>
-                                        <input type="email" class="form-control" name="email" value="{{Auth::user()->email}}">
-                                    </div>
-                                    <div class="row gutters">
-                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                    <div class="text-right">
-                                        <input class="btn btn-primary" type="submit" value="Submit">
-                                    </div>
-                                </div>
-                            </div>
-                            </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <form>
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" placeholder="{{$article->name}}">
         </div>
-
-    @else
-        @include('partials.error')
-    @endif
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control" id="description" rows="3">{{$article->description}}</textarea>
+        </div>
+        <div class="form-group">
+            <input type="radio" id="mythology" name="type" value="Mythology">
+            <label for="mythology">mythology</label>
+            <input type="radio" id="cryptid" name="type" value="Cryptid">
+            <label for="cryptid">Cryptid</label>
+            <input type="radio" id="alien" name="type" value="Alien">
+            <label for="alien">Aliens</label><br>
+        </div>
+        <input class="btn btn-primary" type="submit" value="Submit">
+    </form>
 @endsection

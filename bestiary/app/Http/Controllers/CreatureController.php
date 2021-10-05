@@ -1,47 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Creature;
-use App\Models\User;
+use App\Models\Creatures;
 use Illuminate\Http\Request;
+use function React\Promise\race;
 
 class CreatureController extends Controller
 {
+    public function index(){
+        $creatures = Creatures::select('name');
 
-    /**
-     * randomly shows 3 articles on the home page
-     */
-    public function index()
-    {
-        $creatures = Creature::inRandomOrder()->where('toggle', 1)->limit(3)->get();
-        return view('home', compact ('creatures'));
-    }
-
-    /**
-     * shows the articles based on their category.
-     */
-
-    public function category($tags)
-    {
-        if ($categoryItems = Creature::where('tags', $tags)->get()) {
-            return view('blog.category', compact('categoryItems'));
-        }
-    }
-
-    /**
-     * shows articles made by a specific user
-     */
-
-    public function showProfilePosts($id)
-    {
-        if($id == auth()->user()->id){
-            if ($createdCreatures = Creature::where('user_id', $id)->get()) {
-
-                return view('users.list', compact('createdCreatures'));
-            }
-        }else{
-            return redirect ('home')->with('status', 'Not authorized to access this page.');
-        }
+        return view('home', compact('creatures'));
     }
 
     /**
@@ -50,47 +19,32 @@ class CreatureController extends Controller
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|void
      */
 
-    public function show($id)
-    {
-        if ($creature = Creature::find($id)) {
-            return view('blog.article', compact('creature'));
+    public function show($id) {
+        if($article = Creatures::find($id)){
+            return view('blog.article', compact('article'));
         }
     }
 
     public function create()
     {
-        return view('blog.create');
+        return view('users.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-            $this->validate($request,[
-            'name' => 'required|unique:creatures',
-            'description' => 'required',
-            'image' => 'required|mimes:jpeg,png,jpg,gif,svg',
-            'tags' => 'required',
-            'user_id'=> 'required',
-            'toggle' => 'required'
-
-        ]);
-
-        $creature = Creature::create([
-            'name' => $request->name,
-            'description' => $request->description,
-            'image' => $request->file('image')->storePublicly('images', 'public'),
-            'tags' => $request->tags,
-            'user_id' => $request->user_id,
-            'toggle' => $request->toggle,
-        ]);
-
-        return view('blog.article', compact('creature'));
-
+        /* $newCreature = Creatures::create([$request[
+                 'name'=> $name,
+                 'image'=> $request,
+                 'description'=> $request,
+                 'tags'=>$request
+             ]
+         );*/
     }
 
     /**
@@ -101,13 +55,8 @@ class CreatureController extends Controller
      */
     public function edit($id)
     {
-        $user = User::find(auth()->user()->id);
-        if($creature = Creature::find($id)){
-            if($creature->user_id == auth()->user()->id or $user->creatures()->count() >= 5 or $user->is_admin == 1){
-                return view('blog.article-edit', compact('creature'));
-            } else{
-                return back()->with('status','Not authorized to access this page.');
-            }
+        if($article = Creatures::find($id)){
+            return view('users.edit', compact('article'));
         }
     }
 
@@ -120,21 +69,7 @@ class CreatureController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'name' => 'nullable',
-            'description' => 'nullable',
-            'toggle' => 'required',
-            'image' => 'nullable|mimes:jpeg,png,jpg,gif,svg',
-        ]);
-
-        $creature = Creature::find($id)->update([
-            'name' => $request->name,
-            'description' => $request->description,
-            'toggle' => $request->toggle,
-            'image' =>  $request->file('image')->storePublicly('images', 'public'),
-        ]);
-
-        return redirect('users.list');
+        //store the updates information and redirect user
     }
 
     /**
@@ -145,31 +80,9 @@ class CreatureController extends Controller
      */
     public function destroy($id)
     {
-        $creature = Creature::find($id);
-        $user = User::where('id', '=',$creature->user_id )->get();
-        if($creature->user_id == auth()->user()->id or auth()->user()->is_admin == 1) {
-            $creature->delete();
-            return redirect('/');
-        } else {
-            return back()->with('status','Not authorized to execute this function.');
-        }
+        /* if user is users{
+        then delete creature out of database}
+        */
     }
-
-    /**
-     * sets the article either to published or drafted.
-     */
-
-    public function toggle(Request $request){
-        $creature = Creature::find($request->id);
-        if($creature->toggle == 1) {
-            $creature->toggle = 0;
-            } else{
-            $creature->toggle = 1;
-        }
-
-        $creature->update($request->all());
-        return back();
-    }
-
 
 }

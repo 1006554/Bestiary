@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
     <ul>
         @foreach($categoryItems as $categoryItem)
             <li>
@@ -10,4 +9,5 @@
             </li>
         @endforeach
     </ul>
+
 @endsection
