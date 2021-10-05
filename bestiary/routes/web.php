@@ -19,30 +19,15 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 Route::get('/', [CreatureController::class, 'index']);
-
 route::get('/{tags}', [TagController::class, 'category']);
+Route::get('article/{id}', [CreatureController::class, 'show']);
+Route::get('create', [CreatureController::class, 'create']);
+Route::get('article/{id}/edit', [CreatureController::class, 'edit']);
 
-Route::get('article/{id}', [CreatureController::class, 'article']);
 
+Auth::routes();
 
-Route::group(['prefix'=> 'admin'], function(){
-    Route::get('/index', function() {
-        return view('admin.index');
-    })->name('admin.index');
-
-    Route::post('/create', function(\Illuminate\Http\Request $request){
-        return redirect()->route('admin.index')->with($request);
-    })->name('admin.create');
-
-    Route::get('/create', function(){
-        return view('admin.create');
-    })->name('admin.store');
-
-    Route::post('/edit', function(\Illuminate\Http\Request $request){
-        return redirect()->route('admin.index')->with('info', 'Post edited' . $request->input('title'));
-    })->name('admin.update');
-});
-
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 

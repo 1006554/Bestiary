@@ -6,4 +6,11 @@
         <p>{{$article->description}}</p>
         <img src="{{$article->image}}">
     </div>
+    <nav aria-label="functions">
+        <ul class="functions">
+            <li class="favorite"><a class="favorite" href="#">Add to favorites</a></li>
+            <li class="edit"><a class="editbutton" href="#">edit</a></li>
+            <li class="delete"><a class="delete" href="#">delete</a></li>
+        </ul>
+    </nav>
 @endsection
