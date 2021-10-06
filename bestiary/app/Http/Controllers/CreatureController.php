@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 use App\Models\Creatures;
 use Illuminate\Http\Request;
-use function React\Promise\race;
 
 class CreatureController extends Controller
 {
@@ -27,6 +26,7 @@ class CreatureController extends Controller
 
     public function create()
     {
+
         return view('users.create');
     }
 
@@ -36,15 +36,15 @@ class CreatureController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        /* $newCreature = Creatures::create([$request[
-                 'name'=> $name,
-                 'image'=> $request,
-                 'description'=> $request,
-                 'tags'=>$request
-             ]
-         );*/
+    public function store(Request $request){
+        $creature = new Creatures;
+
+        $creature->name = $request->name;
+        $creature->image = $request->image;
+        $creature->description = $request->description;
+        $creature->tags = $request->tag;
+
+        $creature->save();
     }
 
     /**
@@ -69,7 +69,14 @@ class CreatureController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //store the updates information and redirect user
+        $creature = Creatures::find($id);
+
+        $creature->name = $request->name;
+        $creature->image = $request->image;
+        $creature->description = $request->description;
+        $creature->tags = $request->tag;
+
+        $creature->save();
     }
 
     /**
@@ -80,6 +87,9 @@ class CreatureController extends Controller
      */
     public function destroy($id)
     {
+        $creature = Creatures::find($id);
+
+        $creature->delete();
         /* if user is users{
         then delete creature out of database}
         */
