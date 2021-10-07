@@ -2,7 +2,7 @@
 
 @section('content')
     @if(Session::has('info'))
-    <div>
+    <div class="col-md-8">
         <p class="alert alert-info">{{Session::get('info')}}</p>
     </div>
     @endif
