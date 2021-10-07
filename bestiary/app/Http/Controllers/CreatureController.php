@@ -1,13 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Creatures;
+use App\Models\Creature;
 use Illuminate\Http\Request;
 
 class CreatureController extends Controller
 {
     public function index(){
-        $creatures = Creatures::select('name');
+        $creatures = Creature::select('name');
 
         return view('home', compact('creatures'));
     }
@@ -19,14 +19,13 @@ class CreatureController extends Controller
      */
 
     public function show($id) {
-        if($article = Creatures::find($id)){
-            return view('blog.article', compact('article'));
+        if($creature = Creature::find($id)){
+            return view('blog.article', compact('creature'));
         }
     }
 
     public function create()
     {
-
         return view('users.create');
     }
 
@@ -37,13 +36,12 @@ class CreatureController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request){
-        $creature = new Creatures;
-
-        $creature->name = $request->name;
-        $creature->image = $request->image;
-        $creature->description = $request->description;
-        $creature->tags = $request->tag;
-
+        $creature = Creature::create([
+            'name' => $request->name,
+            'image' => $request->image,
+            'description'=>$request->description,
+            'tags' => $request->tag
+        ]);
         $creature->save();
     }
 
@@ -55,8 +53,8 @@ class CreatureController extends Controller
      */
     public function edit($id)
     {
-        if($article = Creatures::find($id)){
-            return view('users.edit', compact('article'));
+        if($creature = Creature::find($id)){
+            return view('users.edit', compact('creature'));
         }
     }
 
@@ -69,14 +67,8 @@ class CreatureController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $creature = Creatures::find($id);
-
-        $creature->name = $request->name;
-        $creature->image = $request->image;
-        $creature->description = $request->description;
-        $creature->tags = $request->tag;
-
-        $creature->save();
+        $creature = Creature::find($id);
+        $creature->update($request->all());
     }
 
     /**
@@ -87,9 +79,10 @@ class CreatureController extends Controller
      */
     public function destroy($id)
     {
-        $creature = Creatures::find($id);
-
+        $creature = Creature::find($id);
         $creature->delete();
+
+        return redirect()->view('home');
         /* if user is users{
         then delete creature out of database}
         */

@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    <ul>
+    <ul class="col-md-8">
         @foreach($categoryItems as $categoryItem)
             <li>
                 <img src="{{$categoryItem -> image}}" alt="thumbnails" class="img-thumbnail">
-                <a href="article/{{$categoryItem -> id}}">{{$categoryItem-> name}}</a>
+                <a href="{{route('creatures.show', ['creature' => $categoryItem->id])}}">{{$categoryItem-> name}}</a>
             </li>
         @endforeach
     </ul>
-
+@include('partials.pagination')
 @endsection

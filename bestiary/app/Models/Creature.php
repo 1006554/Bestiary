@@ -35,25 +35,18 @@ class Creature extends Model
         'image',
         'description',
         'tags',
-        'user_id',
-        'toggle'
     ];
 
+    protected $table = 'creatures';
 
     public $timestamps = true;
-
 
     public function users()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function comments(){
-        return $this->hasMany(Comment::class);
-    }
 
-    public function scopeFilter($query, array $filters){
-        //
-    }
+
 
 }

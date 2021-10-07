@@ -21,7 +21,7 @@
 </head>
 <body>
 @include('partials.header')
-        <main class="py-4">
+        <main class="py-4 col-md-8">
             @yield('content')
         </main>
     </div>
