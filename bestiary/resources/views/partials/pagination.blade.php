@@ -1,5 +1,5 @@
 <nav aria-label="...">
-    <ul class="pagination">
+    <ul class="col-md-8 pagination">
         <li class="page-item disabled">
             <a class="page-link" href="#" tabindex="-1">Previous</a>
         </li>

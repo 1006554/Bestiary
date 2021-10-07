@@ -16,7 +16,7 @@
                     @endif
                 </div>
                 <div class="card-body">
-                    <a href="/create">Create new article</a>
+                    <a href="{{route('creatures.create')}}">Create new article</a>
                 </div>
             </div>
         </div>
