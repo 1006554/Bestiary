@@ -42,8 +42,8 @@
                             <label for="mythology">mythology</label>
                             <input type="radio" id="cryptid" name="tag" value="Cryptid">
                             <label for="cryptid">Cryptid</label>
-                            <input type="radio" id="alien" name="tag" value="Alien">
-                            <label for="alien">Aliens</label><br>
+                            <input type="radio" id="aliens" name="tag" value="Aliens">
+                            <label for="aliens">Aliens</label><br>
                         </div>
                         <button type="submit" class="btn btn-primary">Add</button>
                     </form>

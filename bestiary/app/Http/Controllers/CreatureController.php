@@ -43,6 +43,7 @@ class CreatureController extends Controller
             'tags' => $request->tag
         ]);
         $creature->save();
+        return redirect('/');
     }
 
     /**
@@ -69,6 +70,7 @@ class CreatureController extends Controller
     {
         $creature = Creature::find($id);
         $creature->update($request->all());
+        return redirect('/');
     }
 
     /**
@@ -81,8 +83,8 @@ class CreatureController extends Controller
     {
         $creature = Creature::find($id);
         $creature->delete();
+        return redirect('/');
 
-        return redirect()->view('home');
         /* if user is users{
         then delete creature out of database}
         */
