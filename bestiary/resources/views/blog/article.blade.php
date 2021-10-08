@@ -10,7 +10,16 @@
         <ul class="functions">
             <li class="favorite"><a class="favorite" href="#">Add to favorites</a></li>
             <li class="edit"><a class="editbutton" href="{{route('creatures.edit', ['creature' => $creature->id])}}">edit</a></li>
-            <li class="delete"><a class="delete" href="{{route('creatures.destroy', ['creature'=> $creature->id])}}">delete</a></li>
+            <li>
+                <form method="POST" action="{{route('creatures.destroy', ['creature'=> $creature->id])}}">
+                {{ csrf_field() }}
+                    {{ method_field('DELETE') }}
+
+                <button
+                    type="submit"
+                    class="btn btn-sm btn-fill btn-primary">Delete</button>
+                </form>
+            </li>
         </ul>
     </nav>
 @endsection
