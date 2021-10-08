@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 use App\Models\Creature;
 use Illuminate\Http\Request;
 
-use Illuminate\Http\Request;
-
 class UserController extends Controller
 {
     public function profile(){
