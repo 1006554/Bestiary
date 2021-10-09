@@ -2,20 +2,28 @@
 
 namespace App\Http\Controllers;
 use App\Models\Creature;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function profile(){
+    public function show(){
+        dd(user::all());
         return view(users.index);
+    }
+
+    public function edit(){
+
+    }
+
+    public function update(){
+
     }
 
     public function favorites(){
         return view();
     }
 
-    public function toggle(){
-        return view();
-    }
+
 
 }
