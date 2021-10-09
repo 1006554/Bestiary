@@ -41,11 +41,15 @@ class Creature extends Model
 
     public $timestamps = true;
 
+
     public function users()
     {
         return $this->belongsTo(User::class);
     }
 
+    public function favorites(){
+        return $this->hasMany(Creature::class);
+    }
 
 
 
