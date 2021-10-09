@@ -44,8 +44,18 @@ class User extends Authenticatable
 
     protected $fillable = ['name','email','password'];
 
+    protected $hidden = [
+      'password',
+      'remember_token'
+    ];
+
     public function creature()
     {
         return $this->hasMany(Creature::class);
     }
+
+    public function favorites(){
+        return $this->hasMany(Creature::class);
+    }
+
 }

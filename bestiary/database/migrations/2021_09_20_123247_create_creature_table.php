@@ -15,12 +15,12 @@ class CreateCreatureTable extends Migration
     {
         Schema::create('creatures', function (Blueprint $table ) {
             $table->id();
-            $table->integer('userId')->nullable();
-            $table->string('name');
+            $table->foreignId('user_id')->nullable()->constrained('users');
+            $table->string('name')->unique();
             $table->text('image');
             $table->text('description');
             $table->text('tags')->nullable();
-            $table->text('toggle')->default('off');
+            $table->boolean('toggle')->default(false);
             $table->timestamps();
         });
     }

@@ -24,8 +24,16 @@
 
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
-                    <input class="form-control mr-sm-2 " type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    <form method="GET" action="#">
+                        <input class="form-control mr-sm-2 "
+                               type="text"
+                               name="search"
+                               placeholder="Search"
+                               aria-label="Search"
+                               value="{{request('search')}}"
+                        >
+                    </form>
+
                     <!-- Authentication Links -->
                     @guest
                         @if (Route::has('login'))

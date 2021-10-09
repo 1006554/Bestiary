@@ -6,12 +6,35 @@ use Illuminate\Http\Request;
 
 class CreatureController extends Controller
 {
-    public function index(){
-        $creatures = Creature::select('name');
 
-        return view('home', compact('creatures'));
+    public function index()
+    {
+
+        return view('home',
+            [
+                'searchResults' => $this->getSearch()
+            ]);
     }
 
+
+    protected function getSearch(){
+        $searchResults = Creature::latest();
+
+        if (request('search')){
+            $searchResults
+            ->where('name', 'like', '%' . request('search') .'%')
+                ->orWhere('description', 'like', '%' . request('search') .'%');
+        }
+        return $searchResults->get();
+    }
+
+
+
+    public function category($tags){
+        if ($categoryItems = Creature::where('tags',$tags)->get()) {
+            return view('blog.category', compact('categoryItems'));
+        }
+    }
     /**
      * shows article
      * @param $id
@@ -73,6 +96,10 @@ class CreatureController extends Controller
         return redirect('/');
     }
 
+    public function toggle(){
+        return view();
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -89,5 +116,4 @@ class CreatureController extends Controller
         then delete creature out of database}
         */
     }
-
 }
