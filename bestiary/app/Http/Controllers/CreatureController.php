@@ -10,23 +10,9 @@ class CreatureController extends Controller
     public function index()
     {
 
-        return view('home',
-            [
-                'searchResults' => $this->getSearch()
-            ]);
+        return view('home',);
     }
 
-
-    protected function getSearch(){
-        $searchResults = Creature::latest();
-
-        if (request('search')){
-            $searchResults
-            ->where('name', 'like', '%' . request('search') .'%')
-                ->orWhere('description', 'like', '%' . request('search') .'%');
-        }
-        return $searchResults->get();
-    }
 
 
 
@@ -91,13 +77,14 @@ class CreatureController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $creature = Creature::find($id);
-        $creature->update($request->all());
-        return redirect('/');
-    }
 
-    public function toggle(){
-        return view();
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+        ]);
+        $creature = Creature::find($id)->update($request->all());
+
+        return redirect('/');
     }
 
     /**

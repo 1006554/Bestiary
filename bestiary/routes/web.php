@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CreatureController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\FindController;
 use Illuminate\Http\Request;
 
 /*
@@ -29,6 +30,9 @@ Route::get('/index', [UserController::class, 'show' ]);
 Route::get('/favorites', function(){
     return view('users.favorites');
 });
+
+
+Route::get('/search', [FindController::class, 'index']);
 
 
 Route::resource('creatures', CreatureController::class );
