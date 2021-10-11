@@ -37,7 +37,6 @@ class Creature extends Model
         'tags',
     ];
 
-    protected $table = 'creatures';
 
     public $timestamps = true;
 
