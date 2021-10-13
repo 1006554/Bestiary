@@ -15,7 +15,7 @@ class CreateCreatureTable extends Migration
     {
         Schema::create('creatures', function (Blueprint $table ) {
             $table->id();
-            // $table->foreignId('user_id')->nullable()->constrained('users');
+            $table->foreignId('user_id')->nullable()->constrained('users');
             $table->string('name');
             $table->text('image');
             $table->text('description');

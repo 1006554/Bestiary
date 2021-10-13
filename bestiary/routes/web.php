@@ -37,6 +37,8 @@ Route::get('/search', [FindController::class, 'index']);
 
 Route::resource('creatures', CreatureController::class );
 
+Route::resource('users', UserController::class);
+
 Route::get('/{tags}', [CreatureController::class, 'category']);
 
 
