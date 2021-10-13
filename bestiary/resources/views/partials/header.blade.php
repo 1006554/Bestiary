@@ -11,7 +11,7 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
-                <ul class="navbar-nav mr-auto">
+                <ul class="navbar-nav mr-auto list-unstyled">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Categories</a>
                             <div class="dropdown-menu">
@@ -24,9 +24,9 @@
 
                 <!-- Search Widget -->
                 <div class="form-inline my-2 my-lg-0">
-                    <form class="card-body" action="/search" method="GET" role="search">
+                    <form action="/search" method="GET" role="search">
                         {{ csrf_field() }}
-                        <div class="iform-control mr-sm-2">
+                        <div >
                             <input type="text" class="form-control" placeholder="Search for..." name="q">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Go!</button>
           </span>
@@ -37,26 +37,26 @@
                     <!-- Authentication Links -->
                     @guest
                         @if (Route::has('login'))
-                            <li class="nav-item">
+                            <li class="nav-item list-unstyled">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                         @endif
 
                         @if (Route::has('register'))
-                            <li class="nav-item">
+                            <li class="nav-item list-unstyled">
                                 <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                             </li>
                         @endif
                     @else
-                        <li class="nav-item dropdown">
+                        <li class="nav-item dropdown list-unstyled">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{Auth::user()->name }}
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Profile</a>
+                                <a class="dropdown-item" href="{{Route('users.show',['user' => Auth::user()->id])}}">Profile</a>
                                 <a class="dropdown-item" href="#">Favorites</a>
-                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                <a class="dropdown-item" href="{{ route('logout')}}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
@@ -68,7 +68,6 @@
                             </div>
                         </li>
                     @endguest
-                </ul>
             </div>
         </div>
     </nav>

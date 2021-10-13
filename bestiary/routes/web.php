@@ -39,7 +39,8 @@ Route::resource('creatures', CreatureController::class );
 
 Route::resource('users', UserController::class);
 
+
 Route::get('/{tags}', [CreatureController::class, 'category']);
 
 
-
+Route::get('changeStatus', 'UserController@toggle');

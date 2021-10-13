@@ -20,7 +20,7 @@ class CreateCreatureTable extends Migration
             $table->text('image');
             $table->text('description');
             $table->text('tags')->nullable();
-            $table->boolean('toggle')->default(false);
+            $table->boolean('toggle')->default(1);
             $table->timestamps();
         });
     }
