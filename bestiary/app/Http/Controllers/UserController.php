@@ -7,18 +7,17 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function show($userId = null) {
-        $user = null;
+    public function show($id) {
+            $articles = Creature::where('user_id', $id)->get();
+            return view('users/index', compact('articles'));
+    }
 
-        if($userId != null) {
-            $user = User::find($userId);
-        } else {
-            $user = User::find(Auth::user()->id);
-        }
+    public function toggle(Request $request){
+        $article = Creature::find($request->id);
+        $article->toggle = $request->toggle;
+        $article->save();
 
-        return view('user/index', [
-            'user' => $user
-        ]);
+        return response()->json(['success'=>'User status change successfully.']);
     }
 
     public function edit(){

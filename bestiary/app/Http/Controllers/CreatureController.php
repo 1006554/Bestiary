@@ -7,17 +7,13 @@ use Illuminate\Http\Request;
 class CreatureController extends Controller
 {
 
-    public function index()
-    {
-
+    public function index(){
         return view('home',);
     }
 
 
-
-
     public function category($tags){
-        if ($categoryItems = Creature::where('tags',$tags)->get()) {
+        if ($categoryItems = Creature::where('tags',$tags)->paginate(1)) {
             return view('blog.category', compact('categoryItems'));
         }
     }
@@ -46,20 +42,14 @@ class CreatureController extends Controller
      */
     public function store(Request $request){
 
-       /* $this->validate($request, [
-            'name' => 'required',
-            'image' => 'required|file',
-            'description' => 'required',
-            'tags' => 'required'
-        ]);*/
-
         $creature = Creature::create([
             'name' => $request->name,
             'image' => $request->image,
             'description'=>$request->description,
-            'tags' => $request->tag
-        ]);
+            'tags' => $request->tag,
 
+        ]);
+        $creature->user_id = auth()->id();
         $creature->save();
         return redirect('/');
     }

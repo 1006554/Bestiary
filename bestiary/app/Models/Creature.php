@@ -50,6 +50,8 @@ class Creature extends Model
         return $this->hasMany(Creature::class);
     }
 
-
+    public function scopeFilter($query, array $filters){
+        //
+    }
 
 }
