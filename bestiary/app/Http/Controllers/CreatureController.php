@@ -45,12 +45,21 @@ class CreatureController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request){
+
+       /* $this->validate($request, [
+            'name' => 'required',
+            'image' => 'required|file',
+            'description' => 'required',
+            'tags' => 'required'
+        ]);*/
+
         $creature = Creature::create([
             'name' => $request->name,
             'image' => $request->image,
             'description'=>$request->description,
             'tags' => $request->tag
         ]);
+
         $creature->save();
         return redirect('/');
     }

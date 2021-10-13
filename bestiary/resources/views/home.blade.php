@@ -14,10 +14,22 @@
                         </div>
                         {{ __('You are logged in!') }}
                     @endif
+                        @guest
+                            @if (Route::has('login'))
+
+                            @endif
+
+                            @if (Route::has('register'))
+
+                            @endif
+                        @else
+                            {{ Auth::user()->name }}
+                            <div class="card-body">
+                                <a href="{{route('creatures.create')}}">Create new article</a>
+                            </div>
+                        @endguest
                 </div>
-                <div class="card-body">
-                    <a href="{{route('creatures.create')}}">Create new article</a>
-                </div>
+
             </div>
         </div>
     </div>

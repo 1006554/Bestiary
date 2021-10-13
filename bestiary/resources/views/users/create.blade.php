@@ -4,6 +4,7 @@
     <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8">
+                    @if (Auth::check())
                     <form method="POST" action="{{route('creatures.store')}}">
 
                         {{ csrf_field() }}
@@ -47,6 +48,9 @@
                         </div>
                         <button type="submit" class="btn btn-primary">Add</button>
                     </form>
+                        @else
+                        You are not signed in.
+                        @endif
                 </div>
             </div>
         </div>
