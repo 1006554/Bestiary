@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    @if (Auth::check())
     <form method="POST" action="{{route('creatures.update', ['creature' => $creature->id])}}">
         {{ method_field('PUT') }}
         {{ csrf_field() }}
@@ -17,5 +18,7 @@
         <input class="btn btn-primary" type="submit" value="Submit">
 
     </form>
-
+    @else
+        You are not signed in.
+    @endif
 @endsection
