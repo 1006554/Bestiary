@@ -49,7 +49,7 @@ class User extends Authenticatable
       'remember_token'
     ];
 
-    public function creature()
+    public function creatures()
     {
         return $this->hasMany(Creature::class);
     }
