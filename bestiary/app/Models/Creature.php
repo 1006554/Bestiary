@@ -35,6 +35,7 @@ class Creature extends Model
         'image',
         'description',
         'tags',
+        'toggle'
     ];
 
 
