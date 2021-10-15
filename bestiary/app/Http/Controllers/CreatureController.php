@@ -111,26 +111,17 @@ class CreatureController extends Controller
         */
     }
     public function toggle(Request $request){
+        $creature = Creature::find($request->id);
 
-        dd($request);
-        /*
-        $article = Creature::find($request->toggle);
-
-        //if article is published/1
-        if($article::where('toggle', 1)){
-            $article->toggle = 0;
-        }else{
-            $article->toggle = 1;
+        if($creature->toggle == 1) {
+            $creature->toggle = 0;
+            } else{
+            $creature->toggle = 1;
         }
 
-        //change to 0
-        //else
-        //change to 1
+        $creature->update($request->all());
 
-       // dd($request);
+        return redirect('/');
 
-       // $article->update();
-        //return redirect('users/index');
-        */
     }
 }
