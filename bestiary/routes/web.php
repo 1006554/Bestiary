@@ -40,7 +40,12 @@ Route::resource('creatures', CreatureController::class );
 Route::resource('users', UserController::class);
 
 
+Route::post('/creatures/toggle', [UserController::class, 'toggle'])->name('creatures.toggle');
+
+
+Route::get('/{id}', [CreatureController::class, 'showProfilePosts']);
+
+
 Route::get('/{tags}', [CreatureController::class, 'category']);
 
 
-Route::get('changeStatus', 'UserController@toggle');
