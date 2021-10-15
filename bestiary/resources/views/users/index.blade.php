@@ -4,6 +4,7 @@
         @if  (Auth::check())
             <div class="post .col-12 .col-md-8">
                 <table class="table table-bordered">
+
                     <thead>
                     <tr>
                         <th>Name</th>
@@ -11,20 +12,32 @@
                     </tr>
                     </thead>
                     <tbody>
+                    @foreach($createdCreatures as $creature)
+                    <tr>
+                            <th>{{$creature->name}}</th>
+                            <th>{{$creature->toggle}}</th>
+                    </tr>
+                    @endforeach
                         <!--
-                        <form method="POST" action="/$creature->nam}">-->
-                        @foreach($articles as $article)
-                        <tr>
-                            <td>{{ $article->name }}</td>
-                            <td>
+                        <form method="POST" action=""
 
-                            <input data-id="{{$article->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="InActive" {{ $article->status ? 'checked' : '' }}>
-                            </td>
-                            <td>
-                                <a href="#" >edit</a>
-                            </td>
-                        </tr>
-                        @endforeach
+                        @/foreach()
+
+                            <label for="toggle">{$creature->name}}</label>
+                            <label>Status</label>
+                            <form method="POST" action="{route('creatures.toggle',$creature->id)}}">
+                               // { //method_field('PUT') }
+                                //{//csrf_field() }
+
+                                @/if(//$creature->toggle = '1')
+                                <input id="flexCheckChecked" type="checkbox" name="toggle" value="{$creature->toggle}}">
+                                <button type="submit" class="btn btn-info" name="toggle">{$creature->toggle}}</button>
+                                @/else
+                                    <input id="flexCheckDefault" type="checkbox" name="toggle" value="{$creature->toggle}}">
+                                    <button type="submit" class="btn btn-info" name="toggle">{$creature->toggle}}</button>
+                                @/endif
+
+                        @/endforeach </form>-->
                     </tbody>
                 </table>
             </div>

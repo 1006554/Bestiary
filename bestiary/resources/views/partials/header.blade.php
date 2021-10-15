@@ -54,7 +54,7 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{Route('users.show',['user' => Auth::user()->id])}}">Profile</a>
+                                <a class="dropdown-item" href="{{URL::to(Auth::user()->id)}}">Profile</a>
                                 <a class="dropdown-item" href="#">Favorites</a>
                                 <a class="dropdown-item" href="{{ route('logout')}}"
                                    onclick="event.preventDefault();

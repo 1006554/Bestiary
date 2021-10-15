@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Creature;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class CreatureController extends Controller
@@ -13,9 +14,16 @@ class CreatureController extends Controller
 
 
     public function category($tags){
-        if ($categoryItems = Creature::where('tags',$tags)->paginate(1)) {
+        if ($categoryItems = Creature::where('tags',$tags)->get()) {
             return view('blog.category', compact('categoryItems'));
         }
+    }
+
+    public function showProfilePosts($id){
+            if ($createdCreatures = Creature::where('user_id', $id)->get()) {
+
+                return view('users.index', compact('createdCreatures'));
+            }
     }
     /**
      * shows article
@@ -100,6 +108,29 @@ class CreatureController extends Controller
 
         /* if user is users{
         then delete creature out of database}
+        */
+    }
+    public function toggle(Request $request){
+
+        dd($request);
+        /*
+        $article = Creature::find($request->toggle);
+
+        //if article is published/1
+        if($article::where('toggle', 1)){
+            $article->toggle = 0;
+        }else{
+            $article->toggle = 1;
+        }
+
+        //change to 0
+        //else
+        //change to 1
+
+       // dd($request);
+
+       // $article->update();
+        //return redirect('users/index');
         */
     }
 }
