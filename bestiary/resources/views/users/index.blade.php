@@ -27,7 +27,8 @@
                                                 <form class="edit" action="{{route('users.edit', ['user' => Auth::user()->id])}}"><button class="btn btn-sm btn-fill btn-primary offset-2" >edit Profile</button></form>
                                             </div>
                                              <div>
-                                                <form class="list" action="#"><button class="btn btn-sm btn-fill btn-primary offset-2" >Go to your published articles</button></form>
+
+                                                 <a class="btn btn-sm btn-fill btn-primary offset-2" href="{{route('creatures.userId', ['id' => Auth::user()->id])}}">Go to your published articles</a>
                                              </div>
                                     </div>
                                 </div>

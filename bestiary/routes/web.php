@@ -36,7 +36,7 @@ Route::resource('users', UserController::class);
 
 
 
-Route::get('{id}', [CreatureController::class, 'showProfilePosts', ]);
+Route::get('{id}/list', [CreatureController::class, 'showProfilePosts',])->name('creatures.userId');
 
 Route::post('{id}/toggle', [CreatureController::class, 'toggle'])->name('creatures.toggle');
 
