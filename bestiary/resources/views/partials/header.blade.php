@@ -50,11 +50,11 @@
                     @else
                         <li class="nav-item dropdown list-unstyled">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{Auth::user()->name }}
+                                {{Auth::user()->name}}
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{URL::to(Auth::user()->id)}}">Profile</a>
+                               <a class="dropdown-item" href="{{route('users.show', Auth::user()->id)}}">Profile</a>
                                 <a class="dropdown-item" href="#">Favorites</a>
                                 <a class="dropdown-item" href="{{ route('logout')}}"
                                    onclick="event.preventDefault();

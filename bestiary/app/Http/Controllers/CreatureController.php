@@ -39,7 +39,7 @@ class CreatureController extends Controller
 
     public function create()
     {
-        return view('users.create');
+        return view('blog.create');
     }
 
     /**
@@ -71,7 +71,7 @@ class CreatureController extends Controller
     public function edit($id)
     {
         if($creature = Creature::find($id)){
-            return view('users.edit', compact('creature'));
+            return view('blog.article-edit', compact('creature'));
         }
     }
 
@@ -84,7 +84,6 @@ class CreatureController extends Controller
      */
     public function update(Request $request, $id)
     {
-
         $request->validate([
             'name' => 'required',
             'description' => 'required',
