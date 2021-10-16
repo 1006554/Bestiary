@@ -21,31 +21,25 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-
 Route::get('/', [CreatureController::class, 'index']);
 
-Route::get('/index', [UserController::class, 'show' ]);
+Route::get('index', [UserController::class, 'show' ]);
 
+Route::get('search', [FindController::class, 'index']);
 
-Route::get('/favorites', function(){
-    return view('users.favorites');
-});
-
-
-Route::get('/search', [FindController::class, 'index']);
-
+Route::get('{tags}', [CreatureController::class, 'category']);
 
 Route::resource('creatures', CreatureController::class );
+
 
 Route::resource('users', UserController::class);
 
 
-Route::post('/{id}/toggle', [CreatureController::class, 'toggle'])->name('creatures.toggle');
+
+Route::get('{id}', [CreatureController::class, 'showProfilePosts', ]);
+
+Route::post('{id}/toggle', [CreatureController::class, 'toggle'])->name('creatures.toggle');
 
 
-Route::get('/{id}', [CreatureController::class, 'showProfilePosts', ]);
-
-
-Route::get('/{tags}', [CreatureController::class, 'category']);
 
 
