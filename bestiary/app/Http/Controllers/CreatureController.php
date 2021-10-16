@@ -22,7 +22,7 @@ class CreatureController extends Controller
     public function showProfilePosts($id){
             if ($createdCreatures = Creature::where('user_id', $id)->get()) {
 
-                return view('users.index', compact('createdCreatures'));
+                return view('users.list', compact('createdCreatures'));
             }
     }
     /**
