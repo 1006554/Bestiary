@@ -8,31 +8,36 @@ use Illuminate\Http\Request;
 class CreatureController extends Controller
 {
 
-    public function index(){
+    public function index()
+    {
         return view('home',);
     }
 
 
-    public function category($tags){
-        if ($categoryItems = Creature::where('tags',$tags)->get()) {
+    public function category($tags)
+    {
+        if ($categoryItems = Creature::where('tags', $tags)->get()) {
             return view('blog.category', compact('categoryItems'));
         }
     }
 
-    public function showProfilePosts($id){
-            if ($createdCreatures = Creature::where('user_id', $id)->get()) {
+    public function showProfilePosts($id)
+    {
+        if ($createdCreatures = Creature::where('user_id', $id)->get()) {
 
-                return view('users.list', compact('createdCreatures'));
-            }
+            return view('users.list', compact('createdCreatures'));
+        }
     }
+
     /**
      * shows article
      * @param $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|void
      */
 
-    public function show($id) {
-        if($creature = Creature::find($id)){
+    public function show($id)
+    {
+        if ($creature = Creature::find($id)) {
             return view('blog.article', compact('creature'));
         }
     }
@@ -45,18 +50,33 @@ class CreatureController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request){
+    public function store(Request $request)
+    {
+
+        $creature = Creature::create([
+            'name' => $request->name,
+            'image' => $request->image,
+            'description' => $request->description,
+            'tags' => $request->tag,
+        ]);
+        /*
+        $this->validate($request, [
+            'name' => 'required|unique:creatures',
+            'image' => 'required',
+            'description' => 'required',
+            'tags' => 'required',
+        ]);
 
         $creature = Creature::create([
             'name' => $request->name,
             'image' => $request->image,
             'description'=>$request->description,
             'tags' => $request->tag,
+        ]);*/
 
-        ]);
         $creature->user_id = auth()->id();
         $creature->save();
         return redirect('/');
@@ -104,11 +124,8 @@ class CreatureController extends Controller
         $creature = Creature::find($id);
         $creature->delete();
         return redirect('/');
-
-        /* if user is users{
-        then delete creature out of database}
-        */
     }
+
     public function toggle(Request $request){
         $creature = Creature::find($request->id);
 
@@ -119,8 +136,8 @@ class CreatureController extends Controller
         }
 
         $creature->update($request->all());
-
         return redirect('/');
-
     }
+
+
 }
