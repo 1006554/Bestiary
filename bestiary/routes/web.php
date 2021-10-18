@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CreatureController;
 use App\Http\Controllers\UserController;
+use  App\Http\Controllers\CommentController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\FindController;
 use Illuminate\Http\Request;
@@ -34,6 +35,8 @@ Route::resource('creatures', CreatureController::class );
 
 Route::resource('users', UserController::class);
 
+
+Route::resource('comments', CommentController::class);
 
 
 Route::get('{id}/list', [CreatureController::class, 'showProfilePosts',])->name('creatures.userId');

@@ -61,9 +61,10 @@ class CreatureController extends Controller
             'image' => $request->image,
             'description' => $request->description,
             'tags' => $request->tag,
+            'user_id' => auth()->id(),
         ]);
         /*
-        $this->validate($request, [
+        request()->validate([
             'name' => 'required|unique:creatures',
             'image' => 'required',
             'description' => 'required',
@@ -77,8 +78,6 @@ class CreatureController extends Controller
             'tags' => $request->tag,
         ]);*/
 
-        $creature->user_id = auth()->id();
-        $creature->save();
         return redirect('/');
     }
 

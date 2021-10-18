@@ -8,7 +8,6 @@
     @if (Auth::check())
     <nav aria-label="functions">
         <ul class="list-unstyled row col-8 ">
-            <form class="favorite" action="#"><button class="btn btn-sm btn-fill btn-primary offset-2"  >Add to favorites</button></form>
             <form class="edit" action="{{route('creatures.edit', ['creature' => $creature->id])}}"><button class="btn btn-sm btn-fill btn-primary offset-2" >edit</button></form>
                 <form method="POST" action="{{route('creatures.destroy', ['creature'=> $creature->id])}}">
                     {{ csrf_field() }}
@@ -19,6 +18,10 @@
                         class="btn btn-sm btn-fill btn-primary offset-2">Delete</button>
                 </form>
             </ul>
+        <section col-span-8 col-start-3 mt-10>
+            @include('partials.create-comment')
+            @include('partials.comment')
+        </section>
                @elseif(Auth::check('admin'))
 
                 <form method="POST" action="{{route('creatures.destroy', ['creature'=> $creature->id])}}">
@@ -32,15 +35,15 @@
     @else
             <nav aria-label="functions">
                 <div>
-                    <form class="favorite"><button class="btn btn-sm btn-fill btn-primary" disabled id="disabled fav" >Add to favorites</button></form>
+                    <ul class="list-unstyled row col-8 ">
                     <form  class="edit"><button class="btn btn-sm btn-fill btn-primary" disabled id="disabled edit" >edit</button></form>
-                    <li>
                         <form>
                             <button
                                 disabled id="disabled delete"
                                 type="submit"
                                 class="btn btn-sm btn-fill btn-primary">Delete</button>
                         </form>
+                    </ul>
                 </div>
             </nav>
     @endif

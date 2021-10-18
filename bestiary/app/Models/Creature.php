@@ -35,6 +35,7 @@ class Creature extends Model
         'image',
         'description',
         'tags',
+        'user_id',
         'toggle'
     ];
 
@@ -47,8 +48,8 @@ class Creature extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function favorites(){
-        return $this->hasMany(Creature::class);
+    public function comments(){
+        return $this->hasMany(Comment::class);
     }
 
     public function scopeFilter($query, array $filters){
