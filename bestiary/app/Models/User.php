@@ -58,8 +58,8 @@ class User extends Authenticatable
         return $this->hasMany(Creature::class);
     }
 
-    public function favorites(){
-        return $this->hasMany(Creature::class);
+    public function comments(){
+        return $this->hasMany(Comment::class);
     }
 
 }
