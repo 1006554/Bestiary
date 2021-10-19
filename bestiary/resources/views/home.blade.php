@@ -23,7 +23,7 @@
 
                             @endif
                         @else
-                            {{ Auth::user()->name }}
+                            {{Auth::user()->name}}
                             <div class="card-body">
                                 <a href="{{route('creatures.create')}}">Create new article</a>
                             </div>
