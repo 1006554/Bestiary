@@ -43,6 +43,8 @@ Route::get('{id}/list', [CreatureController::class, 'showProfilePosts',])->name(
 
 Route::post('{id}/toggle', [CreatureController::class, 'toggle'])->name('creatures.toggle');
 
+Route::post('/comment/store', [App\Http\Controllers\CommentController::class, 'store'])->name('comment.add');
+
 
 
 

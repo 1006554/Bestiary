@@ -10,15 +10,4 @@
             </li>
             @endif
         @endforeach
-<!--
-            <nav aria-label="Page navigation example">
-                <ul class="pagination pagination-sm ">
-                    <li class="page-item">
-                        <a class="page-link" href="{//$categoryItems->links()}}" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>-->
 @endsection
