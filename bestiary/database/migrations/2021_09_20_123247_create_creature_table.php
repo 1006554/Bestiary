@@ -17,7 +17,7 @@ class CreateCreatureTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->string('name');
-            $table->text('image');
+            $table->string('image');
             $table->text('description');
             $table->text('tags')->nullable();
             $table->boolean('toggle')->default(1);

@@ -20,7 +20,9 @@
             </ul>
         <section col-span-8 col-start-3 mt-10>
             @include('partials.create-comment')
-            @include('partials.comment')
+
+            @include('partials.comment', ['comments' => $creature->comments, 'creature_id' => $creature->id])
+
         </section>
                @elseif(Auth::check('admin'))
 

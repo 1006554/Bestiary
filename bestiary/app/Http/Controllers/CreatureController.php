@@ -55,30 +55,17 @@ class CreatureController extends Controller
      */
     public function store(Request $request)
     {
-
-        $creature = Creature::create([
-            'name' => $request->name,
-            'image' => $request->image,
-            'description' => $request->description,
-            'tags' => $request->tag,
-            'user_id' => auth()->id(),
-        ]);
-        /*
-        request()->validate([
+        $input = $request->validate([
             'name' => 'required|unique:creatures',
-            'image' => 'required',
             'description' => 'required',
+            'image' => 'required',
             'tags' => 'required',
+            'user_id'=> 'required'
         ]);
 
-        $creature = Creature::create([
-            'name' => $request->name,
-            'image' => $request->image,
-            'description'=>$request->description,
-            'tags' => $request->tag,
-        ]);*/
+        $creature = Creature::create($input);
+        return view('blog.article', compact('creature'));
 
-        return redirect('/');
     }
 
     /**
@@ -104,12 +91,12 @@ class CreatureController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name' => 'required',
-            'description' => 'required',
+            'name' => 'nullable',
+            'description' => 'nullable',
         ]);
         $creature = Creature::find($id)->update($request->all());
 
-        return redirect('/');
+        return redirect('blog.article', compact('creature'));
     }
 
     /**
