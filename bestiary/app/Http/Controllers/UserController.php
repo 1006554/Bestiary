@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Creature;
 use App\Models\User;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -30,8 +31,10 @@ class UserController extends Controller
         return redirect('/');
     }
 
-    public function favorites(){
-        return view();
+    public function comments($id){
+        if($users = Comment::where('user_id', $id)->get()){
+            return view('partials.comment', compact('users'));
+        }
     }
 
 
