@@ -9,6 +9,8 @@
 
                         {{ csrf_field() }}
 
+                        <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+
                         <h1>Add a new creature</h1>
                         <div class="form-group">
                             <label for="name">Name:</label>
@@ -20,7 +22,7 @@
 
                         <div class="form-group">
                             <label for="description">Description</label>
-                            <textarea id="description" name="description"  cols="30" rows="10" class="form-control"> </textarea>
+                            <textarea id="description" name="description"  cols="30" rows="10" class="form-control" > </textarea>
                             @error('description')
                             <div class="error">Please fill in a description.</div>
                             @enderror
@@ -28,7 +30,7 @@
 
                         <div class="form-group">
                             <label>Upload Your Image
-                                <input type="file" name="image" />
+                                <input type="file" name="image" id="image" value="image">
                                 @error('image')
                                 <div class="error">Please add an image.</div>
                                 @enderror
@@ -36,11 +38,11 @@
                         </div>
 
                         <div class="form-group">
-                            <input type="radio" id="mythology" name="tag" value="Mythology">
+                            <input type="radio" id="mythology" name="tags" value="Mythology">
                             <label for="mythology">mythology</label>
-                            <input type="radio" id="cryptid" name="tag" value="Cryptid">
+                            <input type="radio" id="cryptid" name="tags" value="Cryptid">
                             <label for="cryptid">Cryptid</label>
-                            <input type="radio" id="aliens" name="tag" value="Aliens">
+                            <input type="radio" id="aliens" name="tags" value="Aliens">
                             <label for="aliens">Aliens</label><br>
                             @error('tag')
                             <div class="error">Please select a category.</div>
