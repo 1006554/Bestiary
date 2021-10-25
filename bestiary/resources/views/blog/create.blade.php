@@ -48,8 +48,8 @@
                             <div class="error">Please select a category.</div>
                             @enderror
                         </div>
-
-                        <button type="submit" class="btn btn-primary" value="Submit">Add</button>
+                        <button type="submit" class="btn btn-primary" name="toggle" value="1">Publish</button>
+                        <button type="submit" class="btn btn-primary" name="toggle" value="0">Draft</button>
                     </form>
                         @else
                         You are not signed in.
