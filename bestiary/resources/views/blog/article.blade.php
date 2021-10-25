@@ -4,7 +4,7 @@
     <div class="post .col-12 .col-md-8">
         <h1 class="post-title">{{$creature->name}}</h1>
         <p>{{$creature->description}}</p>
-        <img src="{{asset('storage/creature/'.$creature->image)}}">
+        <img src="{{asset('storage/images/' . $creature->image)}}" width="500px">">
     @if (Auth::check())
     <nav aria-label="functions">
         <ul class="list-unstyled row col-8 ">
