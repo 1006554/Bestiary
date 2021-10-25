@@ -60,10 +60,13 @@ class CreatureController extends Controller
             'description' => 'required',
             'image' => 'required',
             'tags' => 'required',
-            'user_id'=> 'required'
+            'user_id'=> 'required',
+            'toggle' => 'required'
+
         ]);
 
         $creature = Creature::create($input);
+
         return view('blog.article', compact('creature'));
 
     }
@@ -76,8 +79,13 @@ class CreatureController extends Controller
      */
     public function edit($id)
     {
+        $user = User::find(auth()->user()->id);
         if($creature = Creature::find($id)){
-            return view('blog.article-edit', compact('creature'));
+            if($creature->user_id == auth()->user()->id or $user->creatures()->count() == 5){
+                return view('blog.article-edit', compact('creature'));
+            } else{
+                return response('You are not authorized to edit this.');
+            }
         }
     }
 
