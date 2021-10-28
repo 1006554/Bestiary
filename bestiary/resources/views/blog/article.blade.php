@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+    <div class="alert alert-success">
+        {{ session('status') }}
+    </div>
     <div class="post .col-12 .col-md-8">
         <h1 class="post-title">{{$creature->name}}</h1>
         <p>{{$creature->description}}</p>
