@@ -8,11 +8,18 @@ use Illuminate\Http\Request;
 class CreatureController extends Controller
 {
 
+    /**
+     * randomly shows 3 articles on the home page
+     */
     public function index()
     {
-        return view('home',);
+        $creatures = Creature::inRandomOrder()->where('toggle', 1)->limit(3)->get();
+        return view('home', compact ('creatures'));
     }
 
+    /**
+     * shows the articles based on their category.
+     */
 
     public function category($tags)
     {
@@ -20,6 +27,10 @@ class CreatureController extends Controller
             return view('blog.category', compact('categoryItems'));
         }
     }
+
+    /**
+     * shows articles made by a specific user
+     */
 
     public function showProfilePosts($id)
     {
@@ -55,17 +66,24 @@ class CreatureController extends Controller
      */
     public function store(Request $request)
     {
-        $input = $request->validate([
+            $this->validate($request,[
             'name' => 'required|unique:creatures',
             'description' => 'required',
-            'image' => 'required',
+            'image' => 'required|mimes:jpeg,png,jpg,gif,svg',
             'tags' => 'required',
             'user_id'=> 'required',
             'toggle' => 'required'
 
         ]);
 
-        $creature = Creature::create($input);
+        $creature = Creature::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'image' => $request->file('image')->storePublicly('images', 'public'),
+            'tags' => $request->tags,
+            'user_id' => $request->user_id,
+            'toggle' => $request->toggle,
+        ]);
 
         return view('blog.article', compact('creature'));
 
@@ -81,10 +99,10 @@ class CreatureController extends Controller
     {
         $user = User::find(auth()->user()->id);
         if($creature = Creature::find($id)){
-            if($creature->user_id == auth()->user()->id or $user->creatures()->count() == 5){
+            if($creature->user_id == auth()->user()->id or $user->creatures()->count() >= 5 or $user->is_admin == 1){
                 return view('blog.article-edit', compact('creature'));
             } else{
-                return response('You are not authorized to edit this.');
+                return back()->with('error');
             }
         }
     }
@@ -101,10 +119,18 @@ class CreatureController extends Controller
         $request->validate([
             'name' => 'nullable',
             'description' => 'nullable',
+            'toggle' => 'required',
+            'image' => 'nullable|mimes:jpeg,png,jpg,gif,svg',
         ]);
-        $creature = Creature::find($id)->update($request->all());
 
-        return redirect('blog.article', compact('creature'));
+        $creature = Creature::find($id)->update([
+            'name' => $request->name,
+            'description' => $request->description,
+            'toggle' => $request->toggle,
+            'image' =>  $request->file('image')->storePublicly('images', 'public'),
+        ]);
+
+        return redirect('users.list');
     }
 
     /**
@@ -116,9 +142,18 @@ class CreatureController extends Controller
     public function destroy($id)
     {
         $creature = Creature::find($id);
-        $creature->delete();
-        return redirect('/');
+        $user = User::where('id', '=',$creature->user_id )->get();
+        if($creature->user_id == auth()->user()->id or auth()->user()->is_admin == 1) {
+            $creature->delete();
+            return redirect('/');
+        } else {
+            return back()->with('error');
+        }
     }
+
+    /**
+     * sets the article either to published or drafted.
+     */
 
     public function toggle(Request $request){
         $creature = Creature::find($request->id);
@@ -130,7 +165,7 @@ class CreatureController extends Controller
         }
 
         $creature->update($request->all());
-        return redirect('/');
+        return back();
     }
 
 
