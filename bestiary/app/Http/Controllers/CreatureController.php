@@ -34,9 +34,13 @@ class CreatureController extends Controller
 
     public function showProfilePosts($id)
     {
-        if ($createdCreatures = Creature::where('user_id', $id)->get()) {
+        if($id == auth()->user()->id){
+            if ($createdCreatures = Creature::where('user_id', $id)->get()) {
 
-            return view('users.list', compact('createdCreatures'));
+                return view('users.list', compact('createdCreatures'));
+            }
+        }else{
+            return redirect ('home')->with('status', 'Not authorized to access this page.');
         }
     }
 
@@ -102,7 +106,7 @@ class CreatureController extends Controller
             if($creature->user_id == auth()->user()->id or $user->creatures()->count() >= 5 or $user->is_admin == 1){
                 return view('blog.article-edit', compact('creature'));
             } else{
-                return back()->with('error');
+                return back()->with('status','Not authorized to access this page.');
             }
         }
     }
@@ -147,7 +151,7 @@ class CreatureController extends Controller
             $creature->delete();
             return redirect('/');
         } else {
-            return back()->with('error');
+            return back()->with('status','Not authorized to execute this function.');
         }
     }
 
@@ -157,7 +161,6 @@ class CreatureController extends Controller
 
     public function toggle(Request $request){
         $creature = Creature::find($request->id);
-
         if($creature->toggle == 1) {
             $creature->toggle = 0;
             } else{

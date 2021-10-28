@@ -6,6 +6,11 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">{{ __('Dashboard') }}</div>
+                @if (session('status'))
+                    <div class="alert alert-success">
+                        {{ session('status') }}
+                    </div>
+                @endif
                 <ul class="list-unstyled row">
                 @foreach($creatures as $creature)
                     <li class="p-5 m-5">
