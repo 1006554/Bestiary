@@ -6,11 +6,9 @@
         <p>{{$creature->description}}</p>
         <img src="{{asset('storage/' . $creature->image)}}" width="300px">
 
-    @if (Auth::check())
+        @if(Auth::check())
     <nav aria-label="functions">
         <ul class="list-unstyled row col-8 ">
-            <form class="fave" action="#">
-            </form>
             <form class="edit" action="{{route('creatures.edit', ['creature' => $creature->id])}}">
                 <button class="btn btn-sm btn-fill btn-primary offset-2" >edit</button>
              </form>
@@ -24,9 +22,8 @@
                 </form>
             </ul>
         <section col-span-8 col-start-3 mt-10>
-        @endif
             @include('partials.create-comment')
+    @endif
 
             @include('partials.comment', ['comments' => $creature->comments, 'creature_id' => $creature->id])
-
 @endsection
