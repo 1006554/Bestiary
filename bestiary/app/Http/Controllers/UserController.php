@@ -12,11 +12,11 @@ class UserController extends Controller
      * shows the username on the users page
      */
     public function show($id) {
-        if($user = User::find($id)->get()){
-            if($id == auth()->user()->id)
+        $user = User::find($id)->get();
+            if($id == auth()->user()->id){
             return view('users.index', compact('user'));
         }else {
-            abort(4400);
+            return redirect('home')->with('status','Not authorized to acces this page.');
         }
     }
 
@@ -27,6 +27,8 @@ class UserController extends Controller
         if($user = User::find($id)){
             if($id == auth()->user()->id){
                 return view('users.edit', compact('user'));
+            } else {
+                return redirect ('home')->with('not authorized to access this page.');
             }
         }
     }
