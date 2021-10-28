@@ -9,9 +9,6 @@
                             <div class="card-body">
                                 <div class="account-settings">
                                     <div class="user-profile">
-                                        <div class="user-avatar">
-                                            <img src="{{Auth::user()->image}}" >
-                                        </div>
                                         <h5 class="user-name"> {{Auth::user()->name}}</h5>
                                     </div>
                                 </div>

@@ -8,8 +8,8 @@
                     <table class="table">
                         @foreach($data as $creature)
                             <div>
-                                <a href="{{route('creatures.show', ['creature' => $creature->id])}}">{{$creature->name}}</a>
-                                <img src="{{$creature->image}}">
+                                <a href="{{route('creatures.show', ['creature' => $creature->id])}}" width="50" heigh="50">{{$creature->name}}</a>
+                                <img src="{{asset('storage/' . $creature->image)}}">
                             </div>
 
                         @endforeach
@@ -20,5 +20,4 @@
         </div>
     </div>
 
-    @include('partials.pagination')
 @endsection
