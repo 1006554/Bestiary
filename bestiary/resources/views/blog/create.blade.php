@@ -5,7 +5,7 @@
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     @if (Auth::check())
-                    <form method="POST" action="{{route('creatures.store')}}">
+                    <form method="POST" action="{{route('creatures.store')}}" enctype="multipart/form-data">
 
                         {{ csrf_field() }}
 
@@ -30,7 +30,7 @@
 
                         <div class="form-group">
                             <label>Upload Your Image
-                                <input type="file" name="image" id="image" value="image">
+                                <input type="file" name="image">
                                 @error('image')
                                 <div class="error">Please add an image.</div>
                                 @enderror

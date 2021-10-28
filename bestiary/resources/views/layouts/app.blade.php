@@ -24,10 +24,9 @@
 </head>
 <body>
 @include('partials.header')
-        <main class="py-4 col-md-8">
+        <main class="container-xxl p-5">
             @yield('content')
         </main>
     </div>
-@include('partials.footer')
 </body>
 </html>
