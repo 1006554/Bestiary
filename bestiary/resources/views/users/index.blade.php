@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-        @if  (Auth::check())
+        @if (Auth::check())
             <div class="container">
                 <div class="row gutters">
                     <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
@@ -32,5 +32,6 @@
                             </div>
                         </div>
                     </div>
-    @endif
+            @endif
+
 @endsection
