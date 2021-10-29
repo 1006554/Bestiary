@@ -2,8 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CreatureController;
-use App\Http\Controllers\MythologyController;
+use App\Http\Controllers\UserController;
+use  App\Http\Controllers\CommentController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\FindController;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,39 +18,33 @@ use App\Http\Controllers\Auth\LoginController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+Auth::routes();
+
+Route::get('/home', [CreatureController::class, 'index'])->name('home');
+
 Route::get('/', [CreatureController::class, 'index']);
 
-route::get('/mythology', [MythologyController::class, 'mythology']);
+Route::get('index', [UserController::class, 'show' ]);
 
-Route::get('article/{id}', [CreatureController::class, 'article']);
+Route::get('search', [FindController::class, 'index']);
 
+Route::get('{tags}', [CreatureController::class, 'category']);
 
-Route::group(['prefix'=> 'admin'], function(){
-    Route::get('/index', function() {
-        return view('admin.index');
-    })->name('admin.index');
-
-    Route::post('/create', function(\Illuminate\Http\Request $request){
-        return redirect()->route('admin.index')->with($request);
-    })->name('admin.create');
-
-    Route::get('/create', function(){
-        return view('admin.create');
-    })->name('admin.store');
-
-    Route::post('/edit', function(\Illuminate\Http\Request $request){
-        return redirect()->route('admin.index')->with('info', 'Post edited' . $request->input('title'));
-    })->name('admin.update');
-});
+Route::resource('creatures', CreatureController::class );
 
 
-Auth::routes();
+Route::resource('users', UserController::class);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
+Route::resource('comments', CommentController::class);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('{id}/list', [CreatureController::class, 'showProfilePosts',])->name('creatures.userId');
+
+Route::post('{id}/toggle', [CreatureController::class, 'toggle'])->name('creatures.toggle');
+
+Route::post('/comment/store', [App\Http\Controllers\CommentController::class, 'store'])->name('comment.add');
+
+
+
+

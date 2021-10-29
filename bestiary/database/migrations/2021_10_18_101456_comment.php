@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCreatureTable extends Migration
+class Comment extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,11 @@ class CreateCreatureTable extends Migration
      */
     public function up()
     {
-        Schema::create('creatures', function (Blueprint $table ) {
-            $table->id();
+        Schema::create('comments', function (Blueprint $table) {
+            $table->id('id');
+            $table->unsignedBigInteger('creature_id')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
-            $table->string('name');
-            $table->string('image');
-            $table->text('description');
-            $table->text('tags')->nullable();
-            $table->boolean('toggle')->default(1);
-
+            $table->text('body');
             $table->timestamps();
         });
     }
@@ -33,6 +29,6 @@ class CreateCreatureTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('creatures');
+        //
     }
 }
