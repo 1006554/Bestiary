@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+    @guest(redirect('/'))
+
+    @endguest
         @if (Auth::check())
             <div class="container">
                 <div class="row gutters">
@@ -22,6 +25,8 @@
                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                             <div>
                                                 <form class="edit" action="{{route('users.edit', ['user' => Auth::user()->id])}}"><button class="btn btn-sm btn-fill btn-primary offset-2" >edit Profile</button></form>
+                                                @csrf
+                                                {{csrf_field()}}
                                             </div>
                                              <div>
 

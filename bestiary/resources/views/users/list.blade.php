@@ -19,6 +19,7 @@
                 <th>
                     @if($creature->toggle == 1)
                         <form method="POST" action="{{route('creatures.toggle', $creature->id)}}">
+                            @csrf
                             {{ csrf_field() }}
                             <button
                                 type="submit"
@@ -26,6 +27,7 @@
                         </form>
                     @else
                         <form method="POST" action="{{route('creatures.toggle', $creature->id)}}">
+                            @csrf
                             {{ csrf_field() }}
                             <button
                                 type="submit"
@@ -34,10 +36,13 @@
                     @endif
 
                 </th>
-                <th><form class="edit" action="{{route('creatures.edit', ['creature' => $creature->id])}}"><button class="btn btn-sm btn-fill btn-primary offset-2" >edit</button></form></th>
+                <th>
+                    <form class="edit" action="{{route('creatures.edit', ['creature' => $creature->id])}}"><button class="btn btn-sm btn-fill btn-primary offset-2" >edit</button></form></th>
+                @csrf
                 {{ csrf_field() }}
                 <th>
                     <form method="POST" action="{{route('creatures.destroy', ['creature'=> $creature->id])}}">
+                        @csrf
                         {{ csrf_field() }}
                         {{ method_field('DELETE') }}
                         <button

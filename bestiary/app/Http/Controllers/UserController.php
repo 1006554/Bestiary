@@ -12,10 +12,11 @@ class UserController extends Controller
      * shows the username on the users page
      */
     public function show($id) {
-        $user = User::find($id)->get();
-            if($id == auth()->user()->id){
+
+        if ($id == auth()->user()->id){
+            $user = User::find($id)->get();
             return view('users.index', compact('user'));
-        }else {
+        } else {
             return redirect('home')->with('status','Not authorized to acces this page.');
         }
     }

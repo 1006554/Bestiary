@@ -146,7 +146,7 @@ class CreatureController extends Controller
     public function destroy($id)
     {
         $creature = Creature::find($id);
-        $user = User::where('id', '=',$creature->user_id )->get();
+        //$user = User::where('id', '=',$creature->user_id )->get();
         if($creature->user_id == auth()->user()->id or auth()->user()->is_admin == 1) {
             $creature->delete();
             return redirect('/');

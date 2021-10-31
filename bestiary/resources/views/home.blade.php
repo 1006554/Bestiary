@@ -11,11 +11,13 @@
                         {{ session('status') }}
                     </div>
                 @endif
+                <h3 class="p-2 m-2">Featured articles</h3>
                 <ul class="list-unstyled row">
                 @foreach($creatures as $creature)
+
                     <li class="p-5 m-5">
                         <h3><a href="{{route('creatures.show', ['creature' => $creature->id])}}">{{$creature-> name}}</a></h3>
-                        <img src="<img src={{asset('storage/'.$creature->image)}}" alt="thumbnails" class="img-thumbnail">
+
                     </li>
                 @endforeach
                 </ul>

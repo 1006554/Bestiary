@@ -1,4 +1,5 @@
 <form method="POST" action="{{route('comments.store')}}" class="border border-blue-200 rounded-lg">
+    @csrf
     {{csrf_field()}}
     <header> Want to leave a comment? </header>
 

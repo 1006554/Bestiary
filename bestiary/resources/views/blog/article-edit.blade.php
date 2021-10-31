@@ -4,7 +4,8 @@
     @if (Auth::check())
         <form method="POST" action="{{route('creatures.update', ['creature' => $creature->id])}}"  enctype="multipart/form-data">
             {{ method_field('PUT') }}
-            {{ csrf_field() }}
+            @csrf
+            {{csrf_field()}}
 
             <div class="col-md-8 form-group">
                 <label for="name">Name</label>
