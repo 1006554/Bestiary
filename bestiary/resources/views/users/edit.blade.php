@@ -23,7 +23,8 @@
                                 </div>
                                 <form method="POST" action="{{route('users.update', ['user' => Auth::user()->id])}}"  enctype="multipart/form-data">
                                     {{ method_field('PUT') }}
-                                    {{ csrf_field() }}
+                                    @csrf
+                                    {{csrf_field()}}
                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                         <label for="name">Username</label>
                                         <input type="text" class="form-control" name="name" value=" {{Auth::user()->name}}">

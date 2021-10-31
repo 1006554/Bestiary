@@ -7,7 +7,8 @@
                     @if (Auth::check())
                     <form method="POST" action="{{route('creatures.store')}}" enctype="multipart/form-data">
 
-                        {{ csrf_field() }}
+                        @csrf
+                        {{csrf_field()}}
 
                         <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
 

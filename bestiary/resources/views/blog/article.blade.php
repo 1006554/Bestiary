@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    @guest
     <div class="alert alert-success">
         {{ session('status') }}
     </div>
@@ -13,10 +14,13 @@
     <nav aria-label="functions">
         <ul class="list-unstyled row col-8 ">
             <form class="edit" action="{{route('creatures.edit', ['creature' => $creature->id])}}">
+                @csrf
+                {{csrf_field()}}
                 <button class="btn btn-sm btn-fill btn-primary offset-2" >edit</button>
              </form>
                 <form method="POST" action="{{route('creatures.destroy', ['creature'=> $creature->id])}}">
-                    {{ csrf_field() }}
+                    @csrf
+                    {{csrf_field()}}
                     {{ method_field('DELETE') }}
                     <button
                         id="disabled delete"
@@ -29,4 +33,5 @@
     @endif
 
             @include('partials.comment', ['comments' => $creature->comments, 'creature_id' => $creature->id])
+    @endguest
 @endsection

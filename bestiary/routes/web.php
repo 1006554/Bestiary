@@ -33,7 +33,7 @@ Route::get('{tags}', [CreatureController::class, 'category']);
 Route::resource('creatures', CreatureController::class );
 
 
-Route::resource('users', UserController::class);
+Route::resource('users', UserController::class)->middleware('auth');
 
 
 Route::resource('comments', CommentController::class);

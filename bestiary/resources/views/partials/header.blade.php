@@ -25,7 +25,8 @@
                 <!-- Search Widget -->
                 <div class="form-inline my-2 my-lg-0">
                     <form action="/search" method="GET" role="search">
-                        {{ csrf_field() }}
+                        @csrf
+                        {{csrf_field()}}
                         <div >
                             <input type="text" class="form-control" placeholder="Search for..." name="q">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Go!</button>
